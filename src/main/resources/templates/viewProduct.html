@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h2>Products:</h2>
+<table>
+    <tr>
+        <th>
+            id
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Price
+        </th>
+    </tr>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"/>
+        <td th:text="${product.title}"/>
+        <td th:text="${product.price}"/>
+        <td>
+            <form action="#" th:action="@{'/products/delete/{id}'(id=${product.id})}">
+                <button type="submit" class="btn">
+                    Delete
+                </button>
+            </form>
+        </td>
+
+    </tr>
+</table>
+<br><br>
+
+<br><br>
+
+
+</body>
+</html>
