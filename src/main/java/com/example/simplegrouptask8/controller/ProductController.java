@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 
-public class ProductRestController {
+public class ProductController {
     private ProductService productService;
 
     @Autowired
@@ -27,12 +27,17 @@ public class ProductRestController {
         return "viewProduct";
     }
 
-
+    //добавил проверку на null
     @RequestMapping("/products/delete/{id}")
-    public String deleteProduct(@PathVariable Long id) {
+    public String deleteProduct(@PathVariable Long id, Model model) {
+        Product product = productService.findByIdProduct(id);
+        if(product == null) {
+            String message = "There is no product with id = " + id;
+            model.addAttribute("exception", message);
+            return "errorPage";
+        }
         productService.deleteByIdProduct(id);
         return "redirect:/products";
     }
-
 
 }

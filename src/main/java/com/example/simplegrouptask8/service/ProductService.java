@@ -8,4 +8,6 @@ public interface ProductService {
 
     void deleteByIdProduct(long id);
 
+    Product findByIdProduct(Long id);
+
 }
