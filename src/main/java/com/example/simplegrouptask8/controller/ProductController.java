@@ -27,7 +27,6 @@ public class ProductController {
         return "viewProduct";
     }
 
-    //добавил проверку на null
     @RequestMapping("/products/delete/{id}")
     public String deleteProduct(@PathVariable Long id, Model model) {
         Product product = productService.findByIdProduct(id);
